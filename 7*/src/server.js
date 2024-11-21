@@ -13,7 +13,24 @@ export default async () => {
   app.get("/", (req, res) => res.view("src/views/index"));
 
   // BEGIN (write your solution here)
+  app.get("/users", async (req, res) => {
+    try {
+      const { term } = req.query;
+      let filteredUsers = users;
 
+      if (term) {
+        const lowerTerm = term.toLowerCase();
+        filteredUsers = users.filter(user =>
+          user.username.toLowerCase().includes(lowerTerm)
+        );
+      }
+
+      return res.view("src/views/users/index", { users: filteredUsers, term });
+    } catch (error) {
+      console.error("Error fetching users:", error);
+      return res.status(500).send("Internal Server Error");
+    }
+  });
   // END
 
   app.get("/users/:id", (req, res) => {

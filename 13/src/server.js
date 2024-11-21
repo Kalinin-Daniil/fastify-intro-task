@@ -12,7 +12,10 @@ export default async () => {
   await app.register(formbody);
 
   // BEGIN (write your solution here)
-
+  app.addHook("preHandler", (req, res, done) => {
+    res.header('Cache-Control', 'no-store');
+    done();
+  });
   // END
 
   app.get("/", (req, res) => res.view("src/views/index"));

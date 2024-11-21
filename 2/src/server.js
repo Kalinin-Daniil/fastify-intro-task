@@ -9,7 +9,13 @@ export default () => {
   const app = fastify();
 
   // BEGIN (write your solution here)
+  app.get('/phones', (request, reply) => {
+    reply.send(data.phones);
+  });
 
+  app.get('/domains', (request, reply) => {
+    reply.send(data.domains);
+  });
   // END
 
   return app;

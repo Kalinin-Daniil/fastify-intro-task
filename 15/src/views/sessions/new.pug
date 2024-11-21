@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    title Login
+  body
+    h1 Login
+    if error
+      p.error #{error}
+    form(action="/sessions" method="post")
+      div
+        label Имя пользователя
+            input(type="text" name="username" required)
+      div
+        label Пароль
+            input(type="password" name="password" required)
+      div
+        input(type="submit" value="Войти")

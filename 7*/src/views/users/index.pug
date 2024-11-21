@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    title Список пользователей
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css')
+  body
+    div.container
+      h1 Список пользователей
+      
+      form(action='/users', method='get', class='mb-3')
+        div.input-group
+          input(type='text', name='term', value=term, class='form-control', placeholder='Введите имя пользователя...')
+          div.input-group-append
+            button(type='submit', class='btn btn-primary') Поиск
+
+      if users.length > 0
+        ul.list-group
+          each user in users
+            li.list-group-item
+              a(href=/users/${user.id}) #{user.username}
+      else
+        p Нет совпадений.

@@ -1,0 +1,16 @@
+doctype html
+html
+  head
+    title My Site
+    p
+      a(href="/") Главная
+    p
+      a(href="/posts/new") Создать пост
+  body
+    if flash
+      if flash.type === "success"
+        p.success #{flash.message}
+      else if flash.type === "error"
+        p.error #{flash.message}
+    block content
+

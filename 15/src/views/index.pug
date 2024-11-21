@@ -1,0 +1,12 @@
+doctype html
+html
+  head
+    title Home
+  body
+    if username
+      h1 Добро пожаловать, #{username}
+      form(action="/sessions/delete" method="post")
+        input(type="submit" value="Выйти")
+    else
+      h1 Добро пожаловать, гость
+      a(href="/sessions/new") Войти

@@ -1,0 +1,13 @@
+block content
+ h1 Пользователи
+ table.table.table-striped
+  thead
+   tr
+    th Username
+    th Email
+  tbody
+   each user in users
+    tr
+     td #{user.username}
+     td 
+      a(href=`/users/${user.id}`) #{user.email}
